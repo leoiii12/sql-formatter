@@ -1,6 +1,6 @@
 {
-  "name": "sql-formatter",
-  "version": "2.3.3",
+  "name": "@leoiii12/sql-formatter",
+  "version": "2.4.0",
   "description": "Formats whitespaces in a SQL query to make it more readable",
   "license": "MIT",
   "main": "lib/sqlFormatter.js",
@@ -13,7 +13,8 @@
   ],
   "authors": [
     "Rene Saarsoo",
-    "Uku Pattak"
+    "Uku Pattak",
+    "leoiii12"
   ],
   "files": [
     "dist",
@@ -30,17 +31,17 @@
     "build:commonjs": "babel src --out-dir lib",
     "build:umd": "cross-env NODE_ENV=development webpack src/sqlFormatter.js dist/sql-formatter.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/sqlFormatter.js dist/sql-formatter.min.js",
-    "prepublish": "npm run clean && npm run check && npm run build"
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zeroturnaround/sql-formatter.git"
+    "url": "https://github.com/leoiii12/sql-formatter.git"
   },
   "bugs": {
-    "url": "https://github.com/zeroturnaround/sql-formatter/issues"
+    "url": "https://github.com/leoiii12/sql-formatter/issues"
   },
   "dependencies": {
-    "lodash": "^4.16.0"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
