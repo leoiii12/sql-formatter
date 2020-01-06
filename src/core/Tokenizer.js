@@ -87,6 +87,10 @@ export default class Tokenizer {
     }
 
     escapeParen(paren) {
+        if (paren == "\{{2}?" || paren == "\}{2}?") {
+            return paren;
+        }
+
         if (paren.length === 1) {
             // A single punctuation character
             return escapeRegExp(paren);
