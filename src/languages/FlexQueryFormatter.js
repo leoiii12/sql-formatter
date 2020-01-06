@@ -73,7 +73,7 @@ const reservedNewlineWords = [
 
 let tokenizer;
 
-export default class StandardSqlFormatter {
+export default class FlexQueryFormatter {
     /**
      * @param {Object} cfg Different set of configurations
      */
