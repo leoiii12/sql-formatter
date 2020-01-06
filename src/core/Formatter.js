@@ -60,7 +60,7 @@ export default class Formatter {
                 this.previousReservedWord = token;
             }
             else if (token.type === tokenTypes.RESERVED) {
-                formattedQuery = this.formatWithSpaces(token, formattedQuery);
+                formattedQuery = this.formatReservedWord(token, formattedQuery);
                 this.previousReservedWord = token;
             }
             else if (token.type === tokenTypes.OPEN_PAREN) {
@@ -110,11 +110,20 @@ export default class Formatter {
 
         this.indentation.increaseToplevel();
 
+        if (this.cfg.language === 'flex') {
+            query += this.equalizeWhitespace(token.value).toUpperCase();
+            return this.addNewline(query);
+        }
+
         query += this.equalizeWhitespace(token.value);
         return this.addNewline(query);
     }
 
     formatNewlineReservedWord(token, query) {
+        if (this.cfg.language === 'flex') {
+            return this.addNewline(query) + this.equalizeWhitespace(token.value).toUpperCase() + " ";
+        }
+
         return this.addNewline(query) + this.equalizeWhitespace(token.value) + " ";
     }
 
@@ -183,6 +192,14 @@ export default class Formatter {
 
     formatWithoutSpaces(token, query) {
         return this.trimTrailingWhitespace(query) + token.value;
+    }
+
+    formatReservedWord(token, query) {
+        if (this.cfg.language === 'flex') {
+            return query + token.value.toUpperCase() + " ";
+        }
+
+        return query + token.value + " ";
     }
 
     formatWithSpaces(token, query) {
